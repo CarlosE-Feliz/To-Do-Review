@@ -1,23 +1,23 @@
 export default class Completed {
   static ToDoComplete(data) {
     this.checks = document.querySelectorAll('.checkbox');
-    for (let o = 0; o < this.checks.length; o += 1) {
+    for (let i = 0; i < this.checks.length; i += 1) {
       // eslint-disable-next-line no-loop-func
-      this.checks[o].addEventListener('change', () => {
-        if (this.checks[o].checked) {
-          this.labels = document.getElementById(`li-${[o]}`);
+      this.checks[i].addEventListener('change', () => {
+        if (this.checks[i].checked) {
+          this.labels = document.getElementById(`li-${[i]}`);
           this.labels.classList.add('label-true');
-          data[o].completed = true;
-          document.getElementById(`open-${[o]}`).style.display = 'none';
-          document.getElementById(`close-${[o]}`).style.display = 'flex';
-          document.getElementById(`input-${[o]}`).style.background = 'aliceblue';
+          data[i].completed = true;
+          document.getElementById(`open-${[i]}`).style.display = 'none';
+          document.getElementById(`close-${[i]}`).style.display = 'flex';
+          document.getElementById(`input-${[i]}`).style.background = 'aliceblue';
         } else {
-          this.labels = document.getElementById(`li-${[o]}`);
+          this.labels = document.getElementById(`li-${[i]}`);
           this.labels.classList.remove('label-true');
-          data[o].completed = false;
-          document.getElementById(`open-${[o]}`).style.display = 'flex';
-          document.getElementById(`close-${[o]}`).style.display = 'none';
-          document.getElementById(`input-${[o]}`).style.background = 'none';
+          data[i].completed = false;
+          document.getElementById(`open-${[i]}`).style.display = 'flex';
+          document.getElementById(`close-${[i]}`).style.display = 'none';
+          document.getElementById(`input-${[i]}`).style.background = 'none';
         }
         localStorage.setItem('Task', JSON.stringify(data));
       });

@@ -1,5 +1,8 @@
 export default class AddRemove {
   static Add(data) {
+    const setStorage = () => {
+      localStorage.setItem('Task', JSON.stringify(data));
+      }
     this.addNew = document.querySelector('.input1');
     this.addNewBtn = document.querySelector('.input2');
     this.addNewBtn.addEventListener('click', (e) => {
@@ -11,7 +14,7 @@ export default class AddRemove {
           completed: false,
           index: null,
         });
-        localStorage.setItem('Task', JSON.stringify(data));
+        setStorage();
       }
     });
     this.insert = document.getElementById('ul-list');
@@ -21,7 +24,7 @@ export default class AddRemove {
       this.checks.forEach((e) => {
         data.splice(e, 1);
         this.insert.removeChild(e);
-        localStorage.setItem('Task', JSON.stringify(data));
+        setStorage();
       });
     });
 
@@ -32,7 +35,7 @@ export default class AddRemove {
         if (e.target === o) {
           data.splice(o, 1);
           this.insert.removeChild(o.parentElement.parentElement);
-          localStorage.setItem('Task', JSON.stringify(data));
+          setStorage();
         }
       });
     });
@@ -53,7 +56,7 @@ export default class AddRemove {
               this.newLabels = o.parentElement.parentElement.querySelector('.label-info');
               this.newLabels.innerHTML = this.newValue;
               data[index].description = this.newValue;
-              localStorage.setItem('Task', JSON.stringify(data));
+              setStorage();
             }
           });
           o.parentElement.parentElement.querySelector('.open').style.display = 'none';
